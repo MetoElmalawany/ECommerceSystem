@@ -120,3 +120,21 @@ Exception in thread "main" java.lang.IllegalArgumentException: Insufficient quan
 	
 ```
 
+### Scenario 7: Adding an Expired Product to the Cart
+
+```
+Product bread = new Product("Bread", 1, 10, true, LocalDate.of(2025,7,1), true, 100);  
+  
+customer.addItemToCart(bread, 1);  
+  
+ECommerceServices.checkout(customer);
+
+==CONSOLE OUTPUT==
+
+Exception in thread "main" java.lang.IllegalArgumentException: Product is expired
+	at Objects.Cart.addProduct(Cart.java:19)
+	at Objects.Customer.addItemToCart(Customer.java:31)
+	at Main.main(Main.java:17)
+	
+```
+
