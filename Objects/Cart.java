@@ -11,11 +11,13 @@ public class Cart {
     }
 
     public void addProduct(Product product, int quantity){
-        if (product.getQuantity() < quantity){
+        if (product.getQuantity() < quantity)
             throw new IllegalArgumentException("Insufficient quantity in stock!");
-        }
         if (quantity < 0)
             throw new IllegalArgumentException("Quantity cannot be negative");
+        if (product.isExpired())
+            throw new IllegalArgumentException("Product is expired");
+
         CartItem item = new CartItem(product, quantity);
         items.add(item);
         product.decreaseQuantity(quantity);
